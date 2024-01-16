@@ -53,3 +53,15 @@ circle:nth-child(3) {
     transform: rotate(360deg);
   }
 }
+
+.classname {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* Align items vertically in the center */
+}
+
+
+.right-aligned {
+  margin-left: auto;
+}
+
