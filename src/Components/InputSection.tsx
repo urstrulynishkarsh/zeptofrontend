@@ -106,8 +106,8 @@ const InputSection:React.FC<InputSectionProps>=({data})=>{
               />
             </div>
             <div className='flex text-center items-center gap-x-16'>
-              <h1>{item.name}</h1>
-              <h2 className='right-aligned'>{item.email}</h2>
+              <h1 className='w-[5%]'>{item.name}</h1>
+              <h2 className=' ml-16'>{item.email}</h2>
             </div>
           </li>
         ))}
