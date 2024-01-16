@@ -27,8 +27,6 @@ const InputSection:React.FC<InputSectionProps>=({data})=>{
                 item.name.toLowerCase().includes(value.toLowerCase()) &&
                 !selectedItems.some((selectedItem) => selectedItem.id === item.id)
         );
-    
-    
         setItems(filteredItems);
       };
     
@@ -36,9 +34,8 @@ const InputSection:React.FC<InputSectionProps>=({data})=>{
         setSelectedItems([...selectedItems, item]);
         setItems(items.filter(i => i.id !== item.id));
         setInputValue('');
-       
-   
       };
+
       const handleChipRemove = (item: Item) => {
         setSelectedItems(selectedItems.filter(i => i.id !== item.id));
         setItems([...items, item]);
@@ -48,6 +45,7 @@ const InputSection:React.FC<InputSectionProps>=({data})=>{
       useEffect(() => {
         setItems(data.filter((item) => !selectedItems.some((selectedItem) => selectedItem.id === item.id)));
     }, [data, selectedItems]);
+    
 
   return (
     <div className='mt-14'>
@@ -57,17 +55,17 @@ const InputSection:React.FC<InputSectionProps>=({data})=>{
         value={inputValue}
         onChange={handleInputChange}
         onFocus={() => setIsInputFocused(true)}        
-        className="block w-[80%] justify-center p-4 text-sm text-gray-900 border-b-[5px] border-b-blue-100 mx-auto bg-gray-50 "
+        className="block w-[80%] focus:outline-none justify-center p-4 text-sm text-gray-900 border-b-[5px] border-b-blue-100 mx-auto bg-gray-50 "
         placeholder="Add new User..."
         />
          {isInputFocused && (
      <ul
-        className='flex-col h-56 overflow-y-auto flex gap-3 bg-white  p-4 rounded-md shadow-md mx-auto w-5/12'>
+        className='flex-col max-h-56 shadow-2xl border-white overflow-y-auto flex gap-3 bg-white   rounded-md  mx-auto w-5/12'>
         {items.map(item => (
           <li
             key={item.id}
             onClick={() => handleItemClick(item)}
-            className='flex gap-x-4 hover:bg-richblack-50'
+            className='flex gap-x-4 pl-3 hover:bg-richblack-50'
           >
             <div>
               <img
@@ -78,7 +76,7 @@ const InputSection:React.FC<InputSectionProps>=({data})=>{
             </div>
             <div className='flex text-center items-center gap-x-16'>
               <h1>{item.name}</h1>
-              <h2 className='flex-end'>{item.email}</h2>
+              <h2 className='whitespace-pre-line'>{item.email}</h2>
             </div>
           </li>
         ))}
@@ -94,11 +92,7 @@ const InputSection:React.FC<InputSectionProps>=({data})=>{
           </div>
         ))}
       </div>
-
-     
-
     </div>
-
   )
 }
 
